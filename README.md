@@ -1,6 +1,7 @@
 # Cross-domain geographic knowledge graph alignment via augmented human-in-the-loop learning 
 
 ## Repository Overview
+This model is an extension of the previous DRNA-GCNE model.
 This repository contains two main components:
 1. **Sample Generation based on Clustering Algorithms in Human-Machine Collaboration**
 2. **Geographic Knowledge Graph Alignment Guided by Human-in-the-Loop**
@@ -27,6 +28,7 @@ pip install -r requirements.txt
   5. **Labeling**: Apply the model for human-machine interactive data labeling.
 
 ## 仓库简介
+本模型为上一个研究DRNA-GCNE模型的进一步研究
 本仓库包含两个主要内容：
 1. **基于聚类算法的人机协同样本生成**
 2. **人在回路引导下的地理知识图谱对齐**
