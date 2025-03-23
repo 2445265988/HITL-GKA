@@ -5,8 +5,8 @@ class Config:
 	language = 'j3_en' # zh_en | ja_en | fr_en
 	e1 = 'data/' + language + '/ent_ids_1'
 	e2 = 'data/' + language + '/ent_ids_2'
-	# ill = 'data/' + language + '/sup_ent_ids'
-	train = 'data/' + language + '/sup_ent_ids'
+	ill = 'data/' + language + '/sup_ent_ids'
+	train = 'data/' + language + '/train_ent_ids'
 	test = 'data/' + language + '/test_little'
 	val = 'data/' + language + '/val_little'
 	kg1 = 'data/' + language + '/triples_1'
