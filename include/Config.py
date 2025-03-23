@@ -12,7 +12,7 @@ class Config:
 	kg1 = 'data/' + language + '/triples_1'
 	kg2 = 'data/' + language + '/triples_2'
 	# X_pool = 'data/' + language + '/test_file'
-	X_pool = 'data/' + language + '/entity_pairs_300'
+	X_pool = 'data/' + language + '/entity_pairs_8000'
 	model_path = 'include/model/checkpoints'
 	epochs = 600
 	dim = 300
