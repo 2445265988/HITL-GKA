@@ -31,12 +31,12 @@ pip install -r requirements.txt
 
 ## Experimental Process  
 
-### Analysis of Human-Machine Collaborative Sample Generation Effectiveness  
+### Analysis of Human-Machine Collaborative Sample Generation Effectiveness (Corresponding to Section 4.3, Table 3, and Figure 7.)
 1. Run `include/SGC_HMC.py` to generate potential alignment data of 8 different scales (stored in `GeoEA2024_small`) and manually correct potential errors returned in the console.  
 2. Use the LLaMa2 large model to automatically evaluate the generated potential entity pairs.  
 3. Record the number of erroneous annotations from both methods and compare their accuracy.  
 
-### Optimization Experiment for Few-Shot Human-in-the-Loop Alignment  
+### Optimization Experiment for Few-Shot Human-in-the-Loop Alignment (Corresponding to Section 4.4, Table 4.)
 1. Run `main.py` using the `train` and `test` datasets in `GeoEA2024_small` for model training and testing.  
 2. Train and test multiple baseline models using the same dataset. The baseline model codes can be accessed from the following links:  
    - **RDGCN** (Wu et al., 2019b) - [GitHub](https://github.com/StephanieWyt/RDGCN)  
@@ -50,12 +50,13 @@ pip install -r requirements.txt
    - **PEEA** (Tang et al., 2023) - [GitHub](https://github.com/OceanTangWei/PEEA)  
    - **RNM** (Zhu et al., 2022) - [GitHub](https://github.com/Peter7Yao/RNM)  
 
-### Parameter Sensitivity Experiment for Uncertainty Sampling  
-1. Run `main.py` and perform **uncertainty sensitivity testing (threshold adjustment)** operations.  
-2. Set the **uncertainty threshold testing range** to **0.6 - 0.8**.  
-3. Set the **weight testing range** to **0.4 - 0.8**, and analyze the impact of different parameter configurations on model performance.  
+### Parameter Sensitivity Experiment for Uncertainty Sampling (Corresponding to Section 4.5, Table 5, and Figure 8、9.)  
+1. Run `main.py` and perform the **Uncertainty Sensitivity Test (Threshold Adjustment)** related operations.  
+2. Remove the `L1 = tf.nn.leaky_relu()` operation in the `get_loss` function, set the weight to 1:1, and adjust the **Uncertainty Threshold Test Range** to **0.6 - 0.8**. Record the number of correctly classified samples, the total number of labeled samples, and the number of uncertain samples. (Figure 8)  
+3. Remove the `L1 = tf.nn.leaky_relu()` operation in the `get_loss` function, fix the uncertainty threshold at 0.7, and adjust the **Weight Test Range** to **0.4 - 0.8**. Record the number of correctly classified samples, the total number of labeled samples, and the number of uncertain samples. (Figure 9)  
+4. Fix the weight at 0.7, and record the results for both the deletion and non-deletion of the L1 operation at uncertainty thresholds of 0.6 and 0.7. (Table 5)
 
-### Experiment on the Impact of Annotation Quantity on Model Performance  
+### Experiment on the Impact of Annotation Quantity on Model Performance (Corresponding to Section 4.6, Table 6, and Figure 10.)
 1. Run `main.py` to conduct the experiment.  
 2. To compare with a fully annotated model, we randomly select **8000 unannotated data samples**, with **6000 used for training and 2000 for testing**.  
 3. Conduct experiments using two training approaches for comparison:  
@@ -94,12 +95,12 @@ pip install -r requirements.txt
 
 ## 实验过程  
 
-### 人机协同样本生成效果分析  
+### 人机协同样本生成效果分析（对应文中4.3节，表3、图7）
 1. 运行 `include/SGC_HMC.py` 生成 8 个量级的潜在对齐数据（存储于 `GeoEA2024_small`），并对控制台返回的潜在错误进行人工修正。  
 2. 使用 LLaMa2 大模型对生成的潜在实体对进行自动判断。  
 3. 记录两种方法的错误标记数量，并计算正确率进行对比分析。  
 
-### 面向小样本的人在回路对齐结果优化实验  
+### 面向小样本的人在回路对齐结果优化实验（对应文中4.4节，表4）
 1. 运行 `main.py`，使用 `GeoEA2024_small` 数据集中的 `train` 和 `test` 数据进行模型训练和测试。  
 2. 使用相同的数据训练并测试多个对比模型，对比模型代码可从以下链接获取：  
    - **RDGCN** (Wu et al., 2019b) - [GitHub](https://github.com/StephanieWyt/RDGCN)  
@@ -113,10 +114,11 @@ pip install -r requirements.txt
    - **PEEA** (Tang et al., 2023) - [GitHub](https://github.com/OceanTangWei/PEEA)  
    - **RNM** (Zhu et al., 2022) - [GitHub](https://github.com/Peter7Yao/RNM)  
 
-### 不确定性抽样方法参数敏感性实验  
+### 不确定性抽样方法参数敏感性实验（对应文中4.5节，表5、图8.9）
 1. 运行 `main.py` 并执行 **不确定度敏感度测试（阈值调整）** 相关操作。  
-2. 设定 **不确定度阈值测试范围** 为 **0.6 - 0.8**。  
-3. 设定 **权重测试范围** 为 **0.4 - 0.8**，并分析不同参数配置对模型性能的影响。  
+2. 删除get_loss函数中 L1 = tf.nn.leaky_relu()操作，并将权重设置为1:1,调整 **不确定度阈值测试范围** 为 **0.6 - 0.8**，记录正确分类样本数、所标记样本总数、不确定样本数。（图8）
+3. 删除get_loss函数中 L1 = tf.nn.leaky_relu()操作，固定不确定度阈值为0.7，调整 **权重测试范围** 为 **0.4 - 0.8**，记录正确分类样本数、所标记样本总数、不确定样本数。（图9）
+4. 固定权重为0.7，记录在不确定阈值分别为0.6和0.7时，删除L1操作与不删除L1操作的结果。（表5）
 
 ### 标注量对模型性能提升实验  
 1. 运行 `main.py` 进行实验。  
